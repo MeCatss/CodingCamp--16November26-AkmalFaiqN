@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" title="Switch Theme">
+    <span id="themeIcon">☀️</span>
+  </button>
+
+  <!-- Hero Section: Patron Background + Clock -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <!-- Greeting -->
+      <div class="greeting">
+        <span id="greetingText">Good Morning, </span>
+        <span class="editable-name" id="userName" title="Click to edit name">Player</span>
+        <span class="edit-hint">✏️</span>
+      </div>
+
+      <!-- Clock & Date -->
+      <div class="clock" id="clock">00:00:00</div>
+      <div class="date" id="date">Monday, 1 January 2025</div>
+    </div>
+  </section>
+
+  <!-- Main Dashboard -->
+  <main class="dashboard">
+
+    <!-- Focus Timer -->
+    <section class="card timer-card">
+      <h2>Focus Timer</h2>
+      <div class="timer-settings">
+        <label>Work <input type="number" id="workMinutes" value="25" min="1" max="90" /> min</label>
+        <label>Break <input type="number" id="breakMinutes" value="5" min="1" max="30" /> min</label>
+      </div>
+      <div class="timer-display">
+        <svg class="timer-ring" viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="54" />
+          <circle class="ring-progress" id="ringProgress" cx="60" cy="60" r="54" />
+        </svg>
+        <div class="timer-text">
+          <span id="timerLabel">FOCUS</span>
+          <span id="timerDisplay">25:00</span>
+        </div>
+      </div>
+      <div class="timer-controls">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn">Stop</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+    </section>
+
+    <!-- To-Do List -->
+    <section class="card todo-card">
+      <h2>To-Do List</h2>
+      <button class="btn-add" id="openTaskModal">+ Add Task</button>
+      <ul class="task-list" id="taskList"></ul>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="card links-card">
+      <h2>Quick Links</h2>
+      <button class="btn-add" id="openLinkModal">+ Add Link</button>
+      <div class="links-grid" id="linksGrid"></div>
+    </section>
+
+  </main>
+
+  <!-- Task Modal -->
+  <div class="modal" id="taskModal">
+    <div class="modal-box">
+      <h3 id="taskModalTitle">Add Task</h3>
+      <input type="text" id="taskInput" placeholder="Task name..." />
+      <select id="taskUrgency">
+        <option value="high">🔴 High</option>
+        <option value="med" selected>🟡 Medium</option>
+        <option value="low">🟢 Low</option>
+      </select>
+      <label class="toggle-label">
+        <input type="checkbox" id="taskDuplicate" />
+        Allow duplicates
+      </label>
+      <div class="modal-actions">
+        <button id="saveTaskBtn">Save</button>
+        <button class="btn-cancel" id="cancelTaskBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Link Modal -->
+  <div class="modal" id="linkModal">
+    <div class="modal-box">
+      <h3>Add Quick Link</h3>
+      <input type="text" id="linkName" placeholder="Label (e.g. YouTube)" />
+      <input type="url" id="linkUrl" placeholder="URL (e.g. https://youtube.com)" />
+      <div class="modal-actions">
+        <button id="saveLinkBtn">Save</button>
+        <button class="btn-cancel" id="cancelLinkBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
